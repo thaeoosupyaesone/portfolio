@@ -62,10 +62,18 @@ const sendEmail = () => {
       loading.style.display = 'none';
       
       sentMessage.style.display = 'block';
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
       setTimeout(() => {
         sentMessage.style.display = 'none';
       }, 2000);
   }).catch(error => {
+    document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
     loading.style.display = 'none';
     
       console.error("Failed to send email", error);
