@@ -26,7 +26,52 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+emailjs.init({
+  publicKey: "U0z3bKAaF_4qKji3h",
+});
+})();
 
+const sendEmail = () => {
+ let name = document.getElementById('name').value ;
+ let email = document.getElementById('email').value ;
+ let subject = document.getElementById('subject').value ;
+ let message = document.getElementById('message').value ;
+ let sentMessage = document.getElementsByClassName('sent-message')[0];
+ let button = document.getElementById('sendMessage');
+ if(!name || !email || !subject || !message){
+   alert("Please fill all the fields");
+   return;
+  }
+
+  let loading = document.getElementsByClassName('loading')[0];
+ 
+  loading.style.display = 'block';
+  emailjs.send("service_gg1idhp", "template_4hjtv2w", {
+    email_id:email,
+      to_name: "Su Pyae",
+      from_name: name,
+      subject:subject,
+      message: message,
+  }).then(response => {
+      console.log("Email sent successfully!", response);
+      loading.style.display = 'none';
+      
+      sentMessage.style.display = 'block';
+      setTimeout(() => {
+        sentMessage.style.display = 'none';
+      }, 2000);
+  }).catch(error => {
+    loading.style.display = 'none';
+    
+      console.error("Failed to send email", error);
+  });
+}
+</script>
   <!-- =======================================================
   * Template Name: DevFolio
   * Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
@@ -461,23 +506,23 @@ With 6 years of experience, I blend aesthetics with functionality to create webs
           </div>
         </div>
 
-        <form action="forms/contact.php" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
+        <div action="forms/contact.php" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="300">
           <div class="row gy-4">
 
             <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+              <input type="text" id="name" class="form-control" placeholder="Your Name" required="">
             </div>
 
             <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+              <input type="email" class="form-control" id="email" placeholder="Your Email" required="">
             </div>
 
             <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+              <input type="text" class="form-control" id="subject" placeholder="Subject" required="">
             </div>
 
             <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+              <textarea class="form-control" id="message" rows="6" placeholder="Message" required=""></textarea>
             </div>
 
             <div class="col-md-12 text-center">
@@ -485,11 +530,11 @@ With 6 years of experience, I blend aesthetics with functionality to create webs
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
 
-              <button type="submit">Send Message</button>
+              <button id="sendMessage" class="btn primary-color" style="color: white;" onclick="sendEmail()">Send Message</button>
             </div>
 
           </div>
-        </form><!-- End Contact Form -->
+        </d><!-- End Contact Form -->
 
       </div>
 

@@ -6,6 +6,28 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+// import { SMTPClient } from 'emailjs';
+// const client = new SMTPClient({
+//   user: 'slprogramming.dev@gmail.com',
+//   password: 'enejjmgppfqdbdpm',
+//   host: 'smtp.slprogramming.dev@gmail.com',
+//   ssl: true,
+// });
+
+// // send the message and get a callback with an error or details of the message that was sent
+// client.send(
+//   {
+//     text: 'i hope this works',
+//     from: 'you <joesat2516@gmail.com>',
+//     to: 'someone <slprogramming.dev@gmail.com>, another <slprogramming.dev@gmail.com>',
+//     cc: 'else <slprogramming.dev@gmail.com>',
+//     subject: 'testing emailjs',
+//   },
+//   (err, message) => {
+//     console.log(err || message);
+//   }
+// );
 (function() {
   "use strict";
 

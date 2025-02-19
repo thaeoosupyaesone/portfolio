@@ -517,6 +517,10 @@ h6 {
   animation: animate-preloader 1.5s linear infinite;
 }
 
+.primary-color {
+  background-color: var(--accent-color);
+}
+
 @keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
